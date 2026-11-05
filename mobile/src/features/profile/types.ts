@@ -43,3 +43,56 @@ export interface ProfileResponse {
   user: ProfileUser;
   pharmacy: ProfilePharmacy;
 }
+
+/** GET /operating-hours: times are UTC "HH:mm" slices; days without a row are closed. */
+export interface OperatingHourSlot {
+  dayOfWeek: number;
+  openTime: string | null;
+  closeTime: string | null;
+}
+
+export interface OperatingHoursResponse {
+  operatingHours: OperatingHourSlot[];
+}
+
+/** Web editor row; dayOfWeek 0 = Monday … 6 = Sunday (pharmacyUtils ISO convention). */
+export interface OperatingHourDraft {
+  dayOfWeek: number;
+  openTime: string;
+  closeTime: string;
+  isClosed: boolean;
+}
+
+/** PATCH /profile body (manzu-b editProfileSchema). The web always sends the full form. */
+export interface UpdateProfileRequest {
+  user: { name: string; email: string };
+  pharmacy: {
+    name: string;
+    address: string;
+    lga: string;
+    state: string;
+    ward: string;
+    phone: string;
+    licenseNumber: string;
+    logoUrl: string;
+    latitude: number | string;
+    longitude: number | string;
+    deliveryAvailability: boolean;
+  };
+}
+
+export interface LogoUploadFile {
+  uri: string;
+  name: string;
+  type: string;
+}
+
+export interface LogoUploadResponse {
+  message: string;
+  logoUrl: string;
+}
+
+export interface ChangePinRequest {
+  currentPin: string;
+  newPin: string;
+}

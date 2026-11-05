@@ -100,7 +100,7 @@ export function InventoryHeader({ summary, filters, searchText, onSearchText, on
             accessibilityLabel="Search medications"
           />
           {searchText ? (
-            <Pressable onPress={() => onSearchText('')} hitSlop={10} accessibilityLabel="Clear search">
+            <Pressable onPress={() => onSearchText('')} hitSlop={10} accessibilityRole="button" accessibilityLabel="Clear search">
               <X size={16} color={colors.gray400} />
             </Pressable>
           ) : null}

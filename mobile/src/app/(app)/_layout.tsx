@@ -1,10 +1,13 @@
 import { Stack } from 'expo-router';
 
 import { useSessionValidation } from '@/features/auth/hooks';
+import { useNotificationObserver, usePushRegistration } from '@/features/push/hooks';
 import { colors, fonts } from '@/theme';
 
 export default function AppLayout() {
   useSessionValidation();
+  usePushRegistration();
+  useNotificationObserver();
   return (
     <Stack
       screenOptions={{

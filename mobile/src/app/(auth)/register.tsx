@@ -1,5 +1,5 @@
-import { ComingSoon } from '@/components/ui';
+import { RegisterScreen } from '@/features/auth/screens/RegisterScreen';
 
 export default function RegisterRoute() {
-  return <ComingSoon title="Register" milestone={7} />;
+  return <RegisterScreen />;
 }

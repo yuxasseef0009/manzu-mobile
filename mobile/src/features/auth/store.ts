@@ -71,6 +71,7 @@ export const useSession = create<SessionState>()((set, get) => ({
       const payload = token ? decodePharmacyToken(token) : null;
       if (!token || !payload) {
         if (token) await wipeSecureStorage();
+        await clearQueryCache();
         set(signedOutState);
         return;
       }

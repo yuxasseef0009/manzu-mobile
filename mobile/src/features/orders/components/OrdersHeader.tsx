@@ -163,7 +163,7 @@ export function OrdersHeader({ stats, filters, searchText, onSearchText, onChang
             accessibilityLabel="Search orders"
           />
           {searchText ? (
-            <Pressable onPress={() => onSearchText('')} hitSlop={10} accessibilityLabel="Clear search">
+            <Pressable onPress={() => onSearchText('')} hitSlop={10} accessibilityRole="button" accessibilityLabel="Clear search">
               <X size={16} color={colors.gray400} />
             </Pressable>
           ) : null}

@@ -25,7 +25,7 @@ export function Sheet({ visible, onClose, title, children, locked }: SheetProps)
   return (
     <Modal visible={visible} transparent animationType="slide" onRequestClose={close} statusBarTranslucent>
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.flex}>
-        <Pressable style={styles.backdrop} onPress={close} accessibilityLabel="Close" />
+        <Pressable style={styles.backdrop} onPress={close} disabled={locked} accessibilityRole="button" accessibilityLabel="Close" />
         <View style={[styles.sheet, { paddingBottom: Math.max(insets.bottom, 16) }]}>
           <View style={styles.handle} />
           {title ? (

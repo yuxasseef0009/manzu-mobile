@@ -69,9 +69,11 @@ export function Button({
       ) : Icon ? (
         <Icon size={size === 'lg' ? 20 : 16} color={fg} />
       ) : null}
-      <Text size={size === 'lg' ? 'base' : 'sm'} weight={variant === 'gradient' || variant === 'logout' ? 'bold' : 'medium'} color={fg}>
-        {label}
-      </Text>
+      {label ? (
+        <Text size={size === 'lg' ? 'base' : 'sm'} weight={variant === 'gradient' || variant === 'logout' ? 'bold' : 'medium'} color={fg}>
+          {label}
+        </Text>
+      ) : null}
     </View>
   );
 

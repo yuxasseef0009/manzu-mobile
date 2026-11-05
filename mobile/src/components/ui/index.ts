@@ -12,3 +12,6 @@ export * from './Text';
 export * from './RadioRow';
 export * from './Sheet';
 export * from './DateField';
+export * from './ChipGroup';
+export * from './SelectField';
+export * from './TimeField';

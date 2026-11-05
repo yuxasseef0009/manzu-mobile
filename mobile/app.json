@@ -31,12 +31,36 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/logo.png",
-          "imageWidth": 120,
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 160,
           "backgroundColor": "#FFFFFF"
         }
       ],
-      "@react-native-community/datetimepicker"
+      "@react-native-community/datetimepicker",
+      "expo-sharing",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Manzu Pharmacy uses your location to pin your pharmacy on the map."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Manzu Pharmacy accesses your photos so you can upload a pharmacy logo.",
+          "cameraPermission": false,
+          "microphonePermission": false
+        }
+      ],
+      "react-native-maps",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#1ABA7F",
+          "defaultChannel": "orders"
+        }
+      ]
     ],
     "scheme": "manzu-pharmacy",
     "experiments": {

@@ -1,6 +1,7 @@
 import type { LucideIcon } from 'lucide-react-native';
 import { Pressable, StyleSheet, View } from 'react-native';
 
+import { haptics } from '@/lib/haptics';
 import { colors, radius } from '@/theme';
 
 import { Text } from './Text';
@@ -18,7 +19,10 @@ interface RadioRowProps {
 export function RadioRow({ label, selected, onPress, icon: Icon, color = colors.primary, disabled }: RadioRowProps) {
   return (
     <Pressable
-      onPress={onPress}
+      onPress={() => {
+        if (!selected) haptics.selection();
+        onPress();
+      }}
       disabled={disabled}
       accessibilityRole="radio"
       accessibilityState={{ selected, disabled }}

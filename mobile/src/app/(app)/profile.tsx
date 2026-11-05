@@ -1,5 +1,5 @@
-import { ComingSoon } from '@/components/ui';
+import { ProfileScreen } from '@/features/profile/screens/ProfileScreen';
 
 export default function ProfileRoute() {
-  return <ComingSoon title="Profile" milestone={7} />;
+  return <ProfileScreen />;
 }

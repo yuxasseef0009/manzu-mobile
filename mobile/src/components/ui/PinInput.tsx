@@ -30,7 +30,7 @@ export function PinInput({ value, onChange, length = 6, label, error, onSubmit, 
           <Text color={colors.red500}> *</Text>
         </Text>
       ) : null}
-      <Pressable onPress={() => inputRef.current?.focus()} style={styles.row} accessibilityLabel={label ?? 'PIN'} accessibilityHint="Enter your 6-digit PIN">
+      <Pressable onPress={() => inputRef.current?.focus()} style={styles.row} accessibilityRole="button" accessibilityLabel={label ?? 'PIN'} accessibilityHint="Enter your 6-digit PIN">
         {Array.from({ length }, (_, i) => {
           const isActive = focused && (i === digits.length || (i === length - 1 && digits.length === length));
           const char = digits[i];

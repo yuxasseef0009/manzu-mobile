@@ -4,15 +4,24 @@ import { useEffect } from 'react';
 import { profileQueryOptions } from '@/features/profile/api';
 import { isManager } from '@/lib/roles';
 
-import { login } from './api';
+import { login, register } from './api';
 import { SESSION_EXPIRED_MESSAGE } from './messages';
 import { useRole, useSession } from './store';
-import type { LoginRequest } from './types';
+import type { LoginRequest, RegisterRequest } from './types';
 
 export function useLogin() {
   const signIn = useSession((s) => s.signIn);
   return useMutation({
     mutationFn: (values: LoginRequest) => login(values),
+    onSuccess: (data) => signIn(data),
+  });
+}
+
+/** Registration returns a session token for the new MANAGER, so the user lands signed in. */
+export function useRegister() {
+  const signIn = useSession((s) => s.signIn);
+  return useMutation({
+    mutationFn: (values: RegisterRequest) => register(values),
     onSuccess: (data) => signIn(data),
   });
 }

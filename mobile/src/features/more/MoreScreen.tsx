@@ -5,6 +5,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { Badge, BrandLogo, Button, Card, Screen, Text } from '@/components/ui';
 import { useIsManager } from '@/features/auth/hooks';
 import { useSession } from '@/features/auth/store';
+import { NotificationsCard } from '@/features/push/NotificationsCard';
 import { colors, radius } from '@/theme';
 
 interface MoreItem {
@@ -70,6 +71,8 @@ export function MoreScreen() {
           );
         })}
       </Card>
+
+      <NotificationsCard />
 
       <Button title="Logout" variant="logout" icon={LogOut} size="lg" fullWidth onPress={() => void signOut()} />
       <Text size="xs" color={colors.gray400} align="center">

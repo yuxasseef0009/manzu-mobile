@@ -19,9 +19,11 @@ import { bindReactQueryNativeListeners, persistOptions, queryClient } from '@/ap
 import { toastConfig } from '@/components/toast/toastConfig';
 import { authMessageFor } from '@/features/auth/messages';
 import { useSession } from '@/features/auth/store';
+import { configureNotificationHandler } from '@/features/push/notifications';
 
 void SplashScreen.preventAutoHideAsync();
 bindReactQueryNativeListeners();
+configureNotificationHandler();
 configureApiClient({
   getToken: () => useSession.getState().token,
   onUnauthorized: (error) => void useSession.getState().signOut(authMessageFor(error)),
