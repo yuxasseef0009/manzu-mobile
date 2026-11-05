@@ -153,7 +153,7 @@ Each milestone: read the web page and backend route/service first, write TS type
 4. **Inventory:** catalogue with filters and summary, add (suggestions picker), edit, delete, 403 handling. Scanner UI behind flag G5.
 5. **POS:** new sale (online-only), receipt; Sales History with filters, stats, CSV export/share.
 6. **Analytics + Payouts:** analytics ranges and charts (computed on device like the web); Payment tabs (earnings by period, summary, history, pending-payout orders, bank status; manager-only setup/update/verify).
-7. **Profile + Staff + Register:** profile sections, manager-only edit/hours/logo/map, change PIN; Staff CRUD (manager); Register with GPS.
+7. **Profile + Staff + Register:** profile sections, manager-only edit/hours/logo/map, change PIN; Staff CRUD (manager); Register with GPS. Maps use `react-native-maps` (works in Expo Go; Android standalone builds need a Google Maps API key via the plugin config in M8). Staff role is fixed after creation until G9.
 8. **Push, offline, polish:** expo-notifications permission + token (needs G4 or approval to use the existing single-token endpoint), deep link from a notification to an order, offline cache audit (TTL, purge on logout), accessibility, haptics, app icon/splash in brand colours, EAS build profiles.
 
 ---
@@ -225,7 +225,7 @@ Blocking items by milestone: **M1** → C8, S11 · **M3** → C3, C4 · **M7** �
 
 ## 7. Decisions (approved)
 
-- **D0** — the app lives in its own repo, `yusufnasir09/manzu-mobile`, under `mobile/`.
+- **D0** — the app lives in its own repo, `utmemastery/manzu-mobile`, under `mobile/`.
 - **D1** — order transitions copy the web exactly: every status allowed for the delivery method is offered, whatever the current status.
 - **D2** — single-order cancel uses `PATCH /api/pharmacy/orders/bulk {orderIds:[id], status:'CANCELLED', cancelReason}`, so the reason is kept and unpaid orders are restocked.
 - **D3** — managers can assign PHARMACIST, STAFF and TECHNICIAN only.

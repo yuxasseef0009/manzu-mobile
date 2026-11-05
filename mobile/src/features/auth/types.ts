@@ -30,3 +30,22 @@ export interface SessionPharmacy {
   isActive?: boolean;
   logoUrl?: string | null;
 }
+
+// POST /api/auth/register — manzu-b registerSchema. Creates the pharmacy (PENDING) and its MANAGER user.
+export interface RegisterRequest {
+  pharmacy: {
+    name: string;
+    licenseNumber: string;
+    phone: string;
+    address: string;
+    state: string;
+    lga: string;
+    latitude: number;
+    longitude: number;
+    locationAccuracy?: number;
+  };
+  user: { name: string; email: string; pin: string };
+}
+
+/** Same shape as LoginResponse (status 201). */
+export type RegisterResponse = LoginResponse;

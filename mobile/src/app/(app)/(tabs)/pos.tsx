@@ -1,5 +1,1 @@
-import { ComingSoon } from '@/components/ui';
-
-export default function PosRoute() {
-  return <ComingSoon title="Point of Sale" milestone={5} />;
-}
+export { PosScreen as default } from '@/features/pos/screens/PosScreen';

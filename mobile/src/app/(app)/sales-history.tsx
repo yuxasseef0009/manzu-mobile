@@ -1,5 +1,1 @@
-import { ComingSoon } from '@/components/ui';
-
-export default function SalesHistoryRoute() {
-  return <ComingSoon title="Sales History" milestone={5} />;
-}
+export { SalesHistoryScreen as default } from '@/features/sales/screens/SalesHistoryScreen';

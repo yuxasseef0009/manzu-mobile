@@ -36,7 +36,23 @@
           "backgroundColor": "#FFFFFF"
         }
       ],
-      "@react-native-community/datetimepicker"
+      "@react-native-community/datetimepicker",
+      "expo-sharing",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Manzu Pharmacy uses your location to pin your pharmacy on the map."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Manzu Pharmacy accesses your photos so you can upload a pharmacy logo.",
+          "cameraPermission": false,
+          "microphonePermission": false
+        }
+      ],
+      "react-native-maps"
     ],
     "scheme": "manzu-pharmacy",
     "experiments": {
