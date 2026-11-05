@@ -23,14 +23,17 @@ export class ApiError extends Error {
   readonly code: ApiErrorCode;
   readonly details: unknown;
   readonly retryAfter?: string;
+  /** Raw `error` string from `{ message: 'Server error', error: err.message }` bodies (not shown as-is). */
+  readonly serverReason?: string;
 
-  constructor(message: string, status: number, code: ApiErrorCode, details?: unknown, retryAfter?: string) {
+  constructor(message: string, status: number, code: ApiErrorCode, details?: unknown, retryAfter?: string, serverReason?: string) {
     super(message);
     this.name = 'ApiError';
     this.status = status;
     this.code = code;
     this.details = details;
     this.retryAfter = retryAfter;
+    this.serverReason = serverReason;
   }
 
   get isNetwork(): boolean {
@@ -87,7 +90,8 @@ export function normalizeErrorBody(status: number, body: unknown): ApiError {
   }
 
   const retryAfter = typeof b.retryAfter === 'string' ? b.retryAfter : undefined;
-  return new ApiError(message, status, code, b.errors ?? b.details, retryAfter);
+  const serverReason = errorField && code === 'HTTP_ERROR' && errorField !== message ? errorField : undefined;
+  return new ApiError(message, status, code, b.errors ?? b.details, retryAfter, serverReason);
 }
 
 export function toApiError(err: unknown): ApiError {
